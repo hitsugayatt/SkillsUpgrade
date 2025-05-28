@@ -9,7 +9,9 @@ function Provider({children}: Readonly<{children: React.ReactNode;}>) {
    const [userDetail, setUserDetail] = useState();
    const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
    useEffect(()=>{
-    user&& CreateNewUser(); 
+    if(user) {
+        CreateNewUser();
+    } 
    }, [user]);
     const CreateNewUser = async ()=>{
     const result = await axios.post('/api/user', {

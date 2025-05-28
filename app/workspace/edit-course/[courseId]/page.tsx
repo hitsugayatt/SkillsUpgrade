@@ -7,17 +7,14 @@ import ChapterTopicList from '../_components/ChapterTopicList';
 
 const EditCourse = ({viewCourse=false} : any) => {
     const {courseId} = useParams();
-    const [loading, setLoading] = useState(false)
     const [course, setCourse] = useState();
     useEffect(()=>{
         GetCourseInfo();
     }, [])
 
     const GetCourseInfo = async()=>{
-        setLoading(true);
         const result = await axios.get('/api/courses?courseId=' + courseId);
         console.log(result.data);
-        setLoading(false);
         setCourse(result.data);
     }
 

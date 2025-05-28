@@ -18,26 +18,10 @@ interface TopicType {
 }
 
 const ChapterContent = ({courseInfo, refreshData } : ChapterContentProps) => {
-  const courseId = useParams();
   const course = courseInfo?.courses;
-  const enrollCourse = courseInfo?.enrollCourse
   const courseContent = course?.courseContent;
-  const {selectedChapterIndex, setSelectedChapterIndex} = useContext(SelectedChapterIndex); 
+  const {selectedChapterIndex} = useContext(SelectedChapterIndex); 
   const topics = courseContent?.[selectedChapterIndex]?.topics
-
-  const markChapterCompleted = async()=>{
-    const completedChapter = enrollCourse?.completedChapter ?? [];
-
-      completedChapter.push(selectedChapterIndex);
-      const result = await axios.put('/api/enroll-course', {
-          courseId: courseId,
-          completedChapters : completedChapter
-      })
-      console.log(result)
-      refreshData();
-      toast.success('Chapter Marked as Completed!')
-    }
-
   return (
     <div className='p-10 mt-20'>
       <div className='flex justify-between items-center'>

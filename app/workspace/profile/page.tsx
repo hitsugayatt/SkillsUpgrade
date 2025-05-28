@@ -1,9 +1,7 @@
 import { UserProfile } from '@clerk/nextjs'
 import React from 'react'
 
-type Props = {}
-
-const Profile = (props: Props) => {
+const Profile = () => {
   return (
     <div>
         <h2 className='font-bold text-3xl mb-10'>Manage your profile</h2>

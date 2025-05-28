@@ -3,9 +3,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import EnrollCourseCard from './EnrollCourseCard';
 
-type Props = {}
-
-export default function EnrollCourseList (props: Props){
+export default function EnrollCourseList (){
 
     const [enrolledCourseList, setEnrolledCourseList] = useState([]);
     useEffect(()=>{

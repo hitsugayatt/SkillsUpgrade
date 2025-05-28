@@ -35,7 +35,7 @@ export default function CourseList(){
         {courseList?.length==0? 
         <div className="flex p-7 items-center justify-center flex-col border rounded-xl mt-2 bg-secondary">
             <Image src={'/online-edu.png'} alt="edu" width={80} height={80}/>
-            <h2 className="my-2 text-xl font-bold">Looks like you haven't created any courses yet</h2>
+            <h2 className="my-2 text-xl font-bold">Looks like you haven&apos;t created any courses yet</h2>
             <AddNewCourseDialog>
                 <Button className="cursor-pointer">+ Create your first course</Button>
             </AddNewCourseDialog>

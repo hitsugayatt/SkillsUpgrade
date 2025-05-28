@@ -8,9 +8,7 @@ import { Search } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import CourseCard from '../_components/CourseCard'
 
-type Props = {}
-
-const Explore = (props: Props) => {
+const Explore = () => {
   const [courseList, setCourseList] = useState([]);
   const [loading, setLoading] = useState(false);
   const { user } = useUser();

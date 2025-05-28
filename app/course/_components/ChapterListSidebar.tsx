@@ -1,20 +1,17 @@
 "use client"
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import axios from 'axios';
-import { useParams } from 'next/navigation';
 import { SelectedChapterIndex } from '@/context/SelectedChapterIndex';
 
 const ChapterListSidebar = ({courseInfo} : any) => {
   const course = courseInfo?.courses;
-  const enrollCourse = courseInfo?.enrollCourse
   const courseContent = course?.courseContent;
-  const {selectedChapterIndex, setSelectedChapterIndex} = useContext(SelectedChapterIndex);
+  const { setSelectedChapterIndex} = useContext(SelectedChapterIndex);
   return (
     <div className='w-80 p-5 bg-secondary h-screen'>
       <h2 className='my-3 font-bold text-xl'>Chapters ({courseContent?.length})</h2>
