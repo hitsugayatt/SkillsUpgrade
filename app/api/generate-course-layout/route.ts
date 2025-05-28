@@ -86,8 +86,13 @@ export async function POST(req : NextRequest) {
     const bannerImageUrl = await generateImage(ImagePrompt);
 
     // Save the info to database 
+    
+    const email = user?.primaryEmailAddress?.emailAddress;
+    if (!email) {
+      return NextResponse.json({ error: "User email not found" }, { status: 400 });
+    }
 
-    const result = await db.insert(coursesTable).values({
+    await db.insert(coursesTable).values({
     name: JSONResp.course.name,
     description: JSONResp.course.description,
     noOfChapters: JSONResp.course.noOfChapters,
@@ -95,7 +100,7 @@ export async function POST(req : NextRequest) {
     level: JSONResp.course.level,
     category: JSONResp.course.category,
     courseJson: JSONResp, // Store full object
-    userEmail: user?.primaryEmailAddress?.emailAddress!,
+    userEmail: email,
     cid: courseId,
     bannerImageUrl : bannerImageUrl
 });

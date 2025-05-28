@@ -1,12 +1,23 @@
-import { Button } from '@/components/ui/button';
 import { SelectedChapterIndex } from '@/context/SelectedChapterIndex';
 import axios from 'axios';
-import { CheckCircle } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import React, { useContext } from 'react'
 import { toast } from 'sonner';
 
-const ChapterContent = ({courseInfo, refreshData } : any) => {
+interface ChapterContentProps {
+  courseInfo: {
+    courses?: any;
+    enrollCourse?: any;
+  };
+  refreshData: () => void;
+}
+
+interface TopicType {
+  content? : any,
+  topic? : any,
+}
+
+const ChapterContent = ({courseInfo, refreshData } : ChapterContentProps) => {
   const courseId = useParams();
   const course = courseInfo?.courses;
   const enrollCourse = courseInfo?.enrollCourse
@@ -34,7 +45,7 @@ const ChapterContent = ({courseInfo, refreshData } : any) => {
         {/* <Button onClick={markChapterCompleted} className='bg-purple-600 hover:bg-purple-400 hover:cursor-pointer'><CheckCircle/>Mark as Completed</Button> */}
       </div>
       <div className='mt-7'>
-          {topics && topics.map((topic : any, index : any)=>{
+          {topics && topics.map((topic : TopicType, index : number)=>{
             return <div key={index} className='mt-10 p-5 bg-secondary rounded-2xl'>
               <h2 className='font-bold text-2xl text-purple-500 mb-2'>{topic?.topic}</h2>
               {/* <p>{topic?.content}</p> */}

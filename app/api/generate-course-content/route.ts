@@ -16,9 +16,20 @@ No explanations, no code fences. Respond ONLY with JSON like the following:
 }
 User Input:
 `;
+
+type Chapter = {
+  chapterName: string;
+  topics: { topic: string }[];
+};
+
+type GeneratedContent = {
+  chapterName: string;
+  topics: { topic: string; content: string }[];
+};
+
 export async function POST(req : NextRequest) {
     const {courseJson, courseTitle, courseId} = await req.json();
-    const promises = courseJson?.chapters?.map(async(chapter : any)=>{
+    const promises = courseJson?.chapters?.map(async(chapter: Chapter): Promise<GeneratedContent>=>{
         const config = {
         responseMimeType: 'text/plain',
     };
@@ -41,7 +52,7 @@ export async function POST(req : NextRequest) {
   });
   const contentText = response?.candidates?.[0]?.content?.parts?.[0]?.text; 
     if (!contentText) {
-        return NextResponse.json({ error: "Failed to generate course content." }, { status: 500 });
+        throw new Error("Failed to generate course content.");
     }
       
     const contentJson = contentText.replace('```json', '').replace('```', '');
@@ -56,7 +67,7 @@ export async function POST(req : NextRequest) {
  })
 
  const CourseContent = await Promise.all(promises);
- const dbResp = await db.update(coursesTable).set({
+  await db.update(coursesTable).set({
   courseContent: CourseContent
  }).where(eq(coursesTable.cid, courseId))
 
