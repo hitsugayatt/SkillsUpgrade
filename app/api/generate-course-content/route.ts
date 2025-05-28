@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { ai } from "../generate-course-layout/route";
 import { db } from "@/config/db";
 import { coursesTable } from "@/config/schema";
 import { eq } from "drizzle-orm";
+import { GoogleGenAI } from "@google/genai";
 const PROMPT = `Based on the given chapter name and topics, generate ONLY valid JSON containing HTML content for each topic. 
 No explanations, no code fences. Respond ONLY with JSON like the following:
 {
@@ -16,6 +16,10 @@ No explanations, no code fences. Respond ONLY with JSON like the following:
 }
 User Input:
 `;
+
+const ai = new GoogleGenAI({
+        apiKey: process.env.GEMINI_API_KEY,
+});
 
 type Chapter = {
   chapterName: string;
