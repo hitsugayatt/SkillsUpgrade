@@ -1,15 +1,11 @@
 import { SelectedChapterIndex } from '@/context/SelectedChapterIndex';
-import axios from 'axios';
-import { useParams } from 'next/navigation';
 import React, { useContext } from 'react'
-import { toast } from 'sonner';
 
 interface ChapterContentProps {
   courseInfo: {
     courses?: any;
     enrollCourse?: any;
   };
-  refreshData: () => void;
 }
 
 interface TopicType {
@@ -17,7 +13,7 @@ interface TopicType {
   topic? : any,
 }
 
-const ChapterContent = ({courseInfo, refreshData } : ChapterContentProps) => {
+const ChapterContent = ({courseInfo } : ChapterContentProps) => {
   const course = courseInfo?.courses;
   const courseContent = course?.courseContent;
   const {selectedChapterIndex} = useContext(SelectedChapterIndex); 
