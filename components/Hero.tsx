@@ -29,6 +29,7 @@ const Hero = () => {
           <div
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
+            
             <button onClick={()=>router.push('/workspace')} className="bg-gradient-to-r hover:scale-105 hover:cursor-pointer from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all flex items-center gap-2 shadow-2xl">
               Start Free Trial
               <ArrowRight className="w-5 h-5" />
