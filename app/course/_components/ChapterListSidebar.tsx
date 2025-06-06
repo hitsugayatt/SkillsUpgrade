@@ -13,7 +13,7 @@ const ChapterListSidebar = ({courseInfo} : any) => {
   const courseContent = course?.courseContent;
   const { setSelectedChapterIndex} = useContext(SelectedChapterIndex);
   return (
-    <div className='w-80 p-5 bg-secondary h-screen'>
+    <div className='w-100 flex-none  p-5 bg-secondary h-screen'>
       <h2 className='my-3 font-bold text-xl'>Chapters ({courseContent?.length})</h2>
       <Accordion type="single" collapsible>
         {courseContent?.map((chapter : any, index : any) => {
