@@ -49,8 +49,8 @@ const Features = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div
-              key={feature.title}
+            <div 
+              key={index}
               className="bg-slate-800/50 backdrop-blur-sm p-8 hover:scale-105 rounded-2xl border border-slate-700 hover:border-blue-500/50 transition-all duration-300"
             >
               <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-3 rounded-xl w-fit mb-4">

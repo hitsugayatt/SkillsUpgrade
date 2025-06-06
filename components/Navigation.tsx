@@ -34,7 +34,7 @@ const Navigation = () => {
             <div className="ml-10 flex items-baseline space-x-8">
               {['Features', 'Pricing', 'About'].map((item, index) => (
                 <a
-                  key={item}
+                  key={index}
                   href={`#${item.toLowerCase()}`}
                   className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium"
                 >

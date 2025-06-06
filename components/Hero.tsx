@@ -1,5 +1,5 @@
 'use client'
-import { ArrowRight, ChevronDown, Play } from "lucide-react"
+import { ArrowRight, ChevronDown } from "lucide-react"
 import HeroWave from "./dynamic-wave-canvas-background"
 import { useRouter } from "next/navigation"
 
